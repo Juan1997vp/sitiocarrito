@@ -74,6 +74,18 @@ Las cuentas y contraseñas de demostración solo existen en `localStorage` del n
 
 Copia `.env.example` y configura secretos únicamente en el servidor o en el almacén seguro del proveedor de despliegue. `.env` y `.data/` están excluidos de Git.
 
+## Desplegar en Vercel
+
+El proyecto exporta la aplicación Express para Vercel y prepara los archivos estáticos durante el build.
+
+1. Entra en <https://vercel.com/new>, inicia sesión con GitHub y autoriza el acceso al repositorio privado `Juan1997vp/sitiocarrito`.
+2. Importa el repositorio. Mantén la raíz del proyecto y la configuración automática; Vercel detecta Express y ejecuta `vercel-build`.
+3. Pulsa **Deploy**. Vercel crea una URL `vercel.app`; `/api/health` debe responder con `ok: true`.
+4. Para habilitar Mercado Pago, agrega `MERCADOPAGO_ACCESS_TOKEN` y `MERCADOPAGO_WEBHOOK_SECRET` en **Settings > Environment Variables** de Vercel y vuelve a desplegar. `BASE_URL` no hace falta: el servidor detecta el dominio de Vercel.
+5. Para habilitar el panel administrativo, configura `ADMIN_USERNAME`, `ADMIN_PASSWORD` y `ADMIN_SESSION_SECRET` en el mismo apartado. Nunca guardes secretos en el repositorio.
+
+En Vercel, el almacenamiento local de pedidos e inventario se dirige a `/tmp` para evitar escribir en el sistema de archivos de solo lectura, pero ese almacenamiento es temporal y puede no compartirse entre ejecuciones. La demo puede reiniciarse sin conservar pedidos o cambios; antes de aceptar pagos reales, migra esos datos a una base de datos persistente y completa los requisitos indicados en «Antes de producción».
+
 ## Desplegar en Render
 
 El archivo `render.yaml` configura un servicio web gratuito para ejecutar esta aplicación Node.js.

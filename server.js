@@ -9,12 +9,18 @@ import { categories, demoCoupons, products as seedProducts, renderProductIllustr
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const baseUrl = process.env.BASE_URL || process.env.RENDER_EXTERNAL_URL || `http://localhost:${port}`;
+const deploymentDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+const baseUrl = process.env.BASE_URL
+    || (process.env.VERCEL && deploymentDomain ? `https://${deploymentDomain}` : null)
+    || process.env.RENDER_EXTERNAL_URL
+    || `http://localhost:${port}`;
 const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
 const webhookSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
 const adminSessionSecret = process.env.ADMIN_SESSION_SECRET;
 const root = path.dirname(fileURLToPath(import.meta.url));
-const dataDirectory = process.env.STORE_DATA_DIR ? path.resolve(process.env.STORE_DATA_DIR) : path.join(root, '.data');
+const dataDirectory = process.env.STORE_DATA_DIR
+    ? path.resolve(process.env.STORE_DATA_DIR)
+    : process.env.VERCEL ? path.join('/tmp', 'ritmo-sport') : path.join(root, '.data');
 const databasePath = path.join(dataDirectory, 'store.json');
 const cookieName = 'ritmo_admin';
 const orderStates = ['recibido', 'pago pendiente', 'preparando', 'enviado', 'entregado', 'cancelado', 'devuelto'];
@@ -825,8 +831,14 @@ function updatePaymentStatus(order, paymentStatus) {
     return null;
 }
 
-app.listen(port, () => {
+if (process.env.VERCEL) {
     console.info(`Ritmo Sport disponible en ${baseUrl}`);
-    if (!accessToken) console.info('Pagos simulados activos. Mercado Pago está deshabilitado.');
-    if (!process.env.ADMIN_PASSWORD || !adminSessionSecret) console.info('Panel de administración deshabilitado hasta configurar ADMIN_PASSWORD y ADMIN_SESSION_SECRET.');
-});
+} else {
+    app.listen(port, () => {
+        console.info(`Ritmo Sport disponible en ${baseUrl}`);
+        if (!accessToken) console.info('Pagos simulados activos. Mercado Pago está deshabilitado.');
+        if (!process.env.ADMIN_PASSWORD || !adminSessionSecret) console.info('Panel de administración deshabilitado hasta configurar ADMIN_PASSWORD y ADMIN_SESSION_SECRET.');
+    });
+}
+
+export default app;

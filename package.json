@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check catalog.js && node --check script.js && node --check admin.js"
+    "check": "node --check server.js && node --check catalog.js && node --check script.js && node --check admin.js && node --check scripts/prepare-vercel.mjs",
+    "vercel-build": "node scripts/prepare-vercel.mjs"
   },
   "engines": {
     "node": ">=20"
