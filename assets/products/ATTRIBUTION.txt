@@ -1,0 +1,35 @@
+Third-party demonstration product photos
+========================================
+
+These photos are local reference images for fictional demonstration products.
+The image files remain subject to their original licenses.
+
+shoes-asics.jpg
+  "Asics Gel-Cumulus 22.jpg" by Petar Milošević
+  https://commons.wikimedia.org/wiki/File:Asics_Gel-Cumulus_22.jpg
+  CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+
+running-shoes-product.jpg
+  "Brooks Adrenaline GTS 18.jpg" by JSFarman
+  https://commons.wikimedia.org/wiki/File:Brooks_Adrenaline_GTS_18.jpg
+  CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+
+running-shorts-product.jpg
+  "Soffe Gym Shorts.jpg" by Scoty6776
+  https://commons.wikimedia.org/wiki/File:Soffe_Gym_Shorts.jpg
+  CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+
+sports-shirt.png
+  "Sports T-Shirt.png" by Kuttos2
+  https://commons.wikimedia.org/wiki/File:Sports_T-Shirt.png
+  CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+accessories-bottle.jpg
+  "MVP-sports-snacks-water-bottle (15093546478).jpg" by Personal Creations
+  https://commons.wikimedia.org/wiki/File:MVP-sports-snacks-water-bottle_(15093546478).jpg
+  CC BY 2.0: https://creativecommons.org/licenses/by/2.0/
+
+baseball-cap-public-domain.jpg
+  "Baseball cap.jpg" by TexasRebel
+  https://commons.wikimedia.org/wiki/File:Baseball_cap.jpg
+  Public domain.

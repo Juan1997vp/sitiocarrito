@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Administración | Ritmo Sport</title>
+    <link rel="stylesheet" href="/admin.css">
+    <script type="module" src="/admin.js"></script>
+</head>
+<body>
+    <header class="admin-header"><a class="admin-brand" href="/">RITMO<span>SPORT</span><small>ADMIN</small></a><a class="back-to-store" href="/">← Volver a la tienda</a><span class="demo-label">PANEL DE DEMOSTRACIÓN</span><button id="logout-button" type="button" hidden>Cerrar sesión</button></header>
+    <main>
+        <section id="login-panel" class="login-panel">
+            <p class="eyebrow">ACCESO RESTRINGIDO</p><h1>Administración de tienda</h1>
+            <p>El servidor valida la sesión y el rol antes de permitir operaciones del panel.</p>
+            <form id="login-form"><label>Usuario<input name="username" type="text" required autocomplete="username" maxlength="100"></label><label>Contraseña<input name="password" type="password" required autocomplete="current-password" maxlength="100"></label><button type="submit">Iniciar sesión</button></form>
+            <p id="login-message" class="message" role="status"></p>
+            <p>¿Eres cliente? <a href="/">Ve a la tienda y selecciona «Clientes» para abrir tu cuenta.</a></p>
+            <p class="notice">Configura <code>ADMIN_USERNAME</code>, <code>ADMIN_PASSWORD</code> y <code>ADMIN_SESSION_SECRET</code> en el servidor para habilitar el acceso. Nunca uses una contraseña de ejemplo en producción.</p>
+        </section>
+        <section id="dashboard" hidden>
+            <div class="dashboard-heading"><div><p class="eyebrow">RITMO SPORT / OPERACIONES</p><h1>Panel de administración</h1></div><span id="role-badge"></span></div>
+            <p class="notice">Datos de demostración. Ventas, clientes, inventario y pedidos no representan actividad comercial real.</p>
+            <section class="metrics" aria-label="Resumen de ventas">
+                <article><small>Venta bruta antes de descuentos</small><strong id="metric-gross">$0</strong></article>
+                <article><small>Ingresos netos demo</small><strong id="metric-net">$0</strong></article>
+                <article><small>Descuentos demo</small><strong id="metric-discounts">$0</strong></article>
+                <article><small>Costos de envío demo</small><strong id="metric-shipping">$0</strong></article>
+                <article><small>Pedidos pagados demo</small><strong id="metric-orders">0</strong></article>
+                <article><small>Unidades vendidas demo</small><strong id="metric-units">0</strong></article>
+            </section>
+            <section class="admin-section report-controls">
+                <div><h2>Reporte CSV</h2><p>Filtra por periodo y estado del pedido.</p></div>
+                <label>Desde<input id="report-from" type="date"></label><label>Hasta<input id="report-to" type="date"></label>
+                <label>Estado<select id="report-status"><option value="">Todos</option><option>recibido</option><option>pago pendiente</option><option>preparando</option><option>enviado</option><option>entregado</option><option>cancelado</option><option>devuelto</option></select></label>
+                <button id="export-report" type="button">Descargar CSV</button>
+            </section>
+            <section class="admin-section"><div class="section-title"><div><h2>Pedidos</h2><p>Actualiza estado, pago y seguimiento de cada pedido.</p></div><button id="refresh-button" type="button">Actualizar datos</button></div><div id="orders-table" class="table-wrap"></div></section>
+            <section class="admin-section"><div class="section-title"><div><h2>Productos e inventario</h2><p>Los pedidos guardan su propia copia histórica. El inventario nunca admite cantidades negativas.</p></div></div>
+                <details class="admin-form-panel"><summary>Crear producto</summary><form id="create-product-form" class="admin-form">
+                    <label>Nombre<input name="name" required maxlength="100"></label><label>Categoría<select name="category" required><option>Zapatos</option><option>Pantalonetas</option><option>Camisetas</option><option>Accesorios</option><option>Gorras</option></select></label>
+                    <label>Marca<input name="brand" required maxlength="60"></label><label>Género<select name="gender"><option>Unisex</option><option>Hombre</option><option>Mujer</option></select></label><label>SKU<input name="sku" required pattern="[A-Z0-9-]{4,32}" maxlength="32"></label>
+                    <label>Precio COP<input name="price" type="number" required min="100" max="100000000" step="100"></label>                        <label>Stock inicial por variante<input name="initialStock" type="number" required min="0" max="500" value="0"></label>
+                    <label>Colores (separados por coma)<input name="colors" required value="Negro, Blanco"></label><label>Tallas (separadas por coma)<input name="sizes" required value="Única"></label>
+                    <label class="wide">URL de imagen Unsplash (opcional)<input name="image" type="url" placeholder="https://images.unsplash.com/..."></label><label class="wide">Descripción<textarea name="description" maxlength="600"></textarea></label>
+                    <button type="submit">Crear producto</button>
+                </form></details>
+                <div id="products-table" class="table-wrap"></div>
+            </section>
+            <section class="admin-section"><h2>Movimientos recientes de inventario</h2><p>Entradas, salidas, ventas, reservas, liberaciones y ajustes. Se conservan hasta 100 en esta vista demo.</p><div id="inventory-movements" class="table-wrap"></div></section>
+            <section class="admin-section"><h2>Cupones demo</h2><p>Los códigos son descuentos locales de demostración, no promociones facturables.</p>
+                <form id="coupon-form" class="admin-form coupon-form"><label>Código<input name="code" required maxlength="24" pattern="[A-Za-z0-9_-]{3,24}"></label><label>Tipo<select name="type"><option value="percentage">Porcentaje</option><option value="fixed">Valor COP</option></select></label><label>Valor<input name="value" type="number" min="1" required></label><label>Compra mínima<input name="minimum" type="number" min="0" value="0"></label><button type="submit">Guardar cupón</button></form>
+                <div id="coupons-list"></div>
+            </section>
+            <section class="admin-section"><h2>Solicitudes de soporte demo</h2><p>No se envían correos; aquí se guardan consultas de esta instalación local.</p><div id="support-table" class="table-wrap"></div></section>
+            <section class="admin-section"><h2>Productos más vendidos · datos demo</h2><div id="best-sellers"></div><h2>Alertas de bajo inventario</h2><div id="low-stock"></div></section>
+        </section>
+        <p id="global-message" class="message" role="status"></p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#151916">
+    <meta name="description" content="Ritmo Sport: ropa, calzado y accesorios deportivos para acompañar cada uno de tus retos.">
+    <title>Ritmo Sport | Muévete a tu manera</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="announcement"><span>Envío gratis desde $250.000 COP</span><span class="announcement-divider">·</span><span>Pago protegido</span><a href="#catalogo">Compra la colección <span aria-hidden="true">↗</span></a></div>
+    <header class="site-header">
+        <a class="brand" href="#inicio" aria-label="Ritmo Sport, inicio"><span class="brand-mark">R</span><span>RITMO<span class="brand-light">SPORT</span></span></a>
+        <nav aria-label="Navegación principal">
+            <a href="#hombre">Hombre</a><a href="#mujer">Mujer</a><a href="#unisex">Unisex</a><a href="#categorias">Categorías</a><a href="#ofertas">Ofertas</a>
+        </nav>
+        <div class="header-actions">
+            <a class="icon-action favorites-link" href="#favoritos" aria-label="Ver favoritos">♡<span class="action-label">Favoritos</span><span id="favorite-count">0</span></a>
+            <button id="account-open" class="icon-action" type="button" aria-label="Acceso de clientes: abrir mi cuenta"><span aria-hidden="true">♙</span><span class="action-label">Clientes</span></button>
+            <a class="icon-action" href="/admin" aria-label="Acceso de administrador"><span aria-hidden="true">⚙</span><span class="action-label">Admin</span></a>
+            <button id="cart-open" class="cart-link" type="button" aria-label="Abrir carrito"><span aria-hidden="true">🛍</span><span class="action-label">Carrito</span><span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <section class="hero" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="status-dot"></span> HECHO PARA TU SIGUIENTE META</p>
+                <h1 id="page-title">Siente el<br><span>movimiento.</span></h1>
+                <p>Encuentra tu ritmo con ropa, calzado y accesorios que te acompañan dentro y fuera del entrenamiento.</p>
+                <a class="button button-lime" href="#catalogo">Explorar colección <span aria-hidden="true">↗</span></a>
+                <div class="hero-note"><span class="hero-stars" aria-hidden="true">★★★★★</span><span>Productos y reseñas de demostración</span></div>
+            </div>
+            <div class="hero-image" role="group" aria-label="Colección deportiva Ritmo Sport">
+                <img class="hero-photo" src="/assets/products/camiseta-mujer-blanca-equipment.png" alt="Fotografía de colección deportiva al aire libre" fetchpriority="high">
+                <div class="hero-tag"><span>RITMO / 2026</span><strong>MUÉVETE<br>A TU MANERA</strong></div>
+                <span class="hero-number" aria-hidden="true">01 — 03</span>
+            </div>
+        </section>
+
+        <section class="benefits" aria-label="Beneficios de compra">
+            <div><span class="benefit-icon" aria-hidden="true">↗</span><span><strong>Envío gratis</strong><small>En pedidos desde $250.000</small></span></div>
+            <div><span class="benefit-icon" aria-hidden="true">✓</span><span><strong>Compra segura</strong><small>Mercado Pago o simulación</small></span></div>
+            <div><span class="benefit-icon" aria-hidden="true">↺</span><span><strong>Cambios fáciles</strong><small>Consulta nuestras políticas</small></span></div>
+            <div><span class="benefit-icon" aria-hidden="true">♡</span><span><strong>Atención cercana</strong><small>Estamos para ayudarte</small></span></div>
+        </section>
+
+        <section class="category-section" id="categorias" aria-labelledby="category-title">
+            <div class="section-heading"><div><p class="eyebrow">ENCUENTRA LO QUE BUSCAS</p><h2 id="category-title">Compra por categoría<span class="lime-dot">.</span></h2></div><a class="text-link" href="#catalogo">Ver todo el catálogo ↗</a></div>
+            <div id="category-shortcuts" class="category-shortcuts"></div>
+            <div class="category-gender-panel"><p class="eyebrow">EXPLORA POR GÉNERO</p><nav id="category-gender-links" class="category-gender-links" aria-label="Explorar categorías por género"></nav></div>
+        </section>
+
+        <section class="feature-section" id="ofertas" aria-labelledby="offers-title">
+            <div class="section-heading"><div><p class="eyebrow">PRECIO ESPECIAL, MISMA ACTITUD</p><h2 id="offers-title">Favoritos en oferta<span class="lime-dot">.</span></h2></div><span class="demo-tag">PRECIOS DE DEMOSTRACIÓN</span></div>
+            <div class="collection-promo"><p id="sale-summary"></p><button class="button button-dark" type="button" data-highlight="offers">Ver ofertas en el catálogo ↗</button></div>
+        </section>
+
+        <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
+            <div class="catalog-heading">
+                <div><p class="eyebrow">COLECCIÓN RITMO SPORT</p><h2 id="catalog-title">Tu próximo equipo<span class="lime-dot">.</span></h2></div>
+                <p id="product-count" class="product-count" aria-live="polite"></p>
+            </div>
+            <label class="search-field"><span class="sr-only">Buscar en el catálogo</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Busca producto, marca o SKU..." autocomplete="off"><kbd>⌘ K</kbd></label>
+            <details class="filter-panel" open>
+                <summary>Filtros y orden <span aria-hidden="true">⌄</span></summary>
+                <div class="catalog-tools">
+                    <label>Categoría<select id="category-filter"><option value="all">Todas</option></select></label>
+                    <label>Género<select id="gender-filter"><option value="all">Todos</option></select></label>
+                    <label>Marca<select id="brand-filter"><option value="all">Todas las marcas</option></select></label>
+                    <label>Talla<select id="size-filter"><option value="all">Todas</option></select></label>
+                    <label>Color<select id="color-filter"><option value="all">Todos</option></select></label>
+                    <label>Disponibilidad<select id="availability-filter"><option value="all">Cualquiera</option><option value="in-stock">Disponible</option><option value="low-stock">Últimas unidades</option></select></label>
+                    <label>Valoración<select id="rating-filter"><option value="0">Cualquiera</option><option value="4">4+ estrellas</option><option value="4.5">4.5+ estrellas</option></select></label>
+                    <label>Precio máx.<span class="range-label" id="price-value">$600.000</span><input id="price-filter" type="range" min="0" max="600000" step="10000" value="600000"></label>
+                    <label>Ordenar<select id="sort-filter"><option value="popular">Popularidad</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="newest">Novedades</option><option value="rating">Mejor calificación</option></select></label>
+                </div>
+                <button id="clear-filters" class="clear-filters" type="button">Limpiar filtros</button>
+            </details>
+            <div class="catalog-result-heading"><div><p id="catalog-selection" aria-live="polite"></p><p id="result-summary" aria-live="polite"></p></div><p class="demo-tag">Catálogo de demostración</p></div>
+            <div id="catalog-products" class="product-grid" aria-live="polite"></div>
+            <nav class="gender-anchors" aria-label="Filtrar rápidamente por género"><a href="#hombre">Hombre</a><a href="#mujer">Mujer</a><a href="#unisex">Unisex</a></nav>
+        </section>
+
+        <section class="new-section" aria-labelledby="new-title"><div class="section-heading"><div><p class="eyebrow">RECIÉN LLEGADOS</p><h2 id="new-title">Nuevos movimientos<span class="lime-dot">.</span></h2></div></div><div class="collection-promo"><p id="new-summary"></p><button class="button button-dark" type="button" data-highlight="new">Ver novedades en el catálogo ↗</button></div></section>
+        <section class="favorites-section" id="favoritos" aria-labelledby="favorites-title"><div class="section-heading"><div><p class="eyebrow">GUARDADOS EN ESTE DISPOSITIVO</p><h2 id="favorites-title">Tus favoritos<span class="lime-dot">.</span></h2></div><span class="demo-tag">LISTA LOCAL</span></div><div id="favorites-products" class="product-grid"></div></section>
+
+        <section class="cart-section" id="carrito" aria-labelledby="cart-title">
+            <div class="section-heading"><div><p class="eyebrow">TU SIGUIENTE PASO</p><h2 id="cart-title">Carrito y pago<span class="lime-dot">.</span></h2></div><span id="cart-summary">0 artículos</span></div>
+            <div class="cart-layout">
+                <div class="cart-content">
+                    <ul id="cart-items" class="cart-items"><li class="empty-cart">Tu carrito está vacío. Encuentra algo que te mueva.</li></ul>
+                    <div class="coupon-row"><label for="coupon-code">¿Tienes un cupón?</label><div><input id="coupon-code" autocomplete="off" placeholder="Ej. RITMO10"><button id="apply-coupon" type="button">Aplicar</button></div><p id="coupon-message" role="status"></p></div>
+                    <div class="cart-calculations"><span>Subtotal</span><strong id="cart-subtotal">$0</strong><span>Descuento</span><strong id="cart-discount">-$0</strong><span>Impuestos (incluidos)</span><strong id="cart-tax">$0</strong><span>Envío</span><strong id="shipping-cost">$0</strong></div>
+                    <p id="shipping-note" class="shipping-note"></p>
+                    <div class="cart-total"><span>Total</span><strong id="cart-total">$0</strong></div>
+                </div>
+                <form id="checkout-form" class="checkout-form">
+                    <p class="eyebrow">INFORMACIÓN DE ENTREGA</p><h3>¿A dónde lo enviamos?</h3>
+                    <div class="checkout-fields">
+                        <label>Nombre completo<input name="name" autocomplete="name" required minlength="3" maxlength="100" placeholder="Tu nombre"></label>
+                        <label>Correo electrónico<input name="email" type="email" autocomplete="email" required maxlength="120" placeholder="tu@correo.com"></label>
+                        <label>Teléfono<input name="phone" type="tel" autocomplete="tel" required minlength="7" maxlength="20" placeholder="300 123 4567"></label>
+                        <label>Dirección<input name="address" autocomplete="street-address" required minlength="5" maxlength="120" placeholder="Calle, carrera, avenida"></label>
+                        <label>Número / apartamento<input name="streetNumber" required maxlength="30" placeholder="Ej. 12-34, apto 501"></label>
+                        <label>Ciudad<input name="city" autocomplete="address-level2" required minlength="2" maxlength="80" placeholder="Tu ciudad"></label>
+                        <label>Departamento<input name="department" autocomplete="address-level1" required minlength="2" maxlength="80" placeholder="Tu departamento"></label>
+                        <label>Código postal<input name="postalCode" autocomplete="postal-code" required minlength="4" maxlength="12" placeholder="Código postal"></label>
+                        <label>Método de entrega<select id="delivery-method" name="deliveryMethod"></select></label>
+                        <label>Método de pago<select id="payment-method" name="paymentMethod"><option value="simulation">Simulación de pago (no real)</option><option value="mercadopago">Mercado Pago (requiere credenciales)</option><option value="cash">Pago contra entrega (demostración)</option></select></label>
+                        <label id="simulation-outcome-field">Resultado de la simulación<select id="simulation-outcome"><option value="approved">Aprobado</option><option value="pending">Pendiente</option><option value="rejected">Rechazado</option></select></label>
+                    </div>
+                    <label class="checkbox-label"><input id="remember-details" type="checkbox"> Recordar mis datos en este dispositivo</label>
+                    <button id="checkout-button" class="button button-lime checkout-button" type="submit" disabled>Revisar y confirmar pedido <span aria-hidden="true">↗</span></button>
+                    <button id="simulation-button" class="simulation-button" type="button" disabled>Probar un rechazo demo</button>
+                    <p class="secure-note">🔒 Los pagos de esta versión son simulados, salvo que configures Mercado Pago en el servidor. No introduzcas datos de tarjeta.</p>
+                    <p id="checkout-message" class="payment-message" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+            <div id="order-result" class="order-result" role="status" hidden></div>
+        </section>
+
+        <section class="faq-section" id="ayuda" aria-labelledby="faq-title">
+            <div class="section-heading"><div><p class="eyebrow">RESPUESTAS RÁPIDAS</p><h2 id="faq-title">Preguntas frecuentes<span class="lime-dot">.</span></h2></div></div>
+            <div class="faq-grid">
+                <details><summary>¿Los pagos son reales?<span>＋</span></summary><p>El modo predeterminado es una simulación local y no cobra dinero. Mercado Pago requiere un access token configurado de forma segura en el servidor.</p></details>
+                <details><summary>¿Cuánto tarda el envío?<span>＋</span></summary><p>Los plazos y transportadora que ves son ejemplos. Configura un operador logístico antes de ofrecer entregas reales.</p></details>
+                <details><summary>¿Cómo solicito un cambio o devolución?<span>＋</span></summary><p>Escríbenos con tu número de pedido. Los cambios y devoluciones de esta demo son solicitudes informativas, no generan una guía logística.</p></details>
+                <details><summary>¿Puedo comprar sin cuenta?<span>＋</span></summary><p>Sí. Puedes comprar como invitado. Crear cuenta en esta demostración guarda el perfil únicamente en este navegador.</p></details>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contacto">
+            <div><p class="eyebrow">ESTAMOS PARA AYUDARTE</p><h2>¿Dudas con tu pedido?</h2><p>Envíanos un mensaje. Formulario de demostración, sin envío de correos.</p><a href="mailto:soporte@ritmosport.example">soporte@ritmosport.example</a></div>
+            <form id="contact-form" class="contact-form"><label>Nombre<input name="name" required minlength="2" maxlength="100"></label><label>Correo<input name="email" type="email" required maxlength="120"></label><label>Motivo<select name="topic"><option>Consulta de producto</option><option>Pedido y entrega</option><option>Cambios y devoluciones</option><option>Otro</option></select></label><label class="contact-message">Mensaje<textarea name="message" required minlength="10" maxlength="1000"></textarea></label><button class="button button-lime" type="submit">Enviar consulta ↗</button><p id="contact-status" role="status"></p></form>
+        </section>
+        <section class="policy-section" id="politicas" aria-label="Políticas de tienda">
+            <details><summary>Envíos y entregas</summary><p>Las tarifas, transportadoras y tiempos mostrados son ejemplos de demostración. Las compras reales requieren contratar y configurar un servicio logístico.</p></details>
+            <details><summary>Privacidad</summary><p>Los datos del perfil se guardan localmente en este navegador de demostración. Los pedidos de prueba se almacenan en el servidor local. No uses datos sensibles ni despliegues sin aviso de privacidad, retención segura y controles legales aplicables.</p></details>
+            <details><summary>Cambios y devoluciones</summary><p>Las solicitudes son demostrativas. Define una política válida para tu operación y configura el proceso de devolución antes de vender.</p></details>
+            <details><summary>Términos de compra</summary><p>Productos, marcas, inventario, reseñas, precios, pedidos, reportes y pagos de muestra son ficticios y no constituyen una oferta de venta.</p></details>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main"><a class="brand" href="#inicio"><span class="brand-mark">R</span><span>RITMO<span class="brand-light">SPORT</span></span></a><p>Muévete a tu manera. Diseñado en Colombia.</p><nav aria-label="Políticas y accesos"><a href="#politicas">Privacidad</a><a href="#politicas">Envíos</a><a href="#politicas">Cambios y devoluciones</a><a href="#ayuda">Ayuda</a><a href="/admin">Acceso administrador</a></nav></div>
+        <div class="footer-bottom"><span>© 2026 Ritmo Sport · Tienda de demostración</span><span>No son pagos, ventas ni reseñas reales. Precios en COP.</span></div>
+    </footer>
+
+    <dialog id="product-dialog" class="product-dialog" aria-labelledby="detail-name">
+        <button class="dialog-back" type="button" data-close-dialog>← Volver a la tienda</button>
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Cerrar detalle">×</button>
+        <div class="product-detail">
+            <div class="detail-gallery"><img id="detail-image" alt=""><div id="detail-thumbnails" class="detail-thumbnails"></div></div>
+            <div class="detail-copy"><p id="detail-meta" class="eyebrow"></p><h2 id="detail-name"></h2><p id="detail-rating"></p><p id="detail-description"></p><p id="detail-sku" class="detail-sku"></p><div class="detail-price" id="detail-price"></div>
+                <label>Color<select id="detail-color"></select></label><label>Talla<select id="detail-size"></select></label><p id="detail-stock" class="detail-stock"></p>
+                <details><summary>Guía de tallas</summary><p>Elige tu talla habitual. En calzado, la numeración corresponde a talla colombiana/europea. Esta guía es de referencia para la demostración.</p></details>
+                <button id="detail-add" class="button button-lime" type="button">Agregar al carrito</button><button id="detail-favorite" class="simulation-button" type="button">♡ Guardar en favoritos</button>
+            </div>
+        </div>
+        <section class="related-section"><h3>También te puede gustar</h3><div id="related-products" class="product-grid"></div></section>
+    </dialog>
+
+    <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="quick-cart-title">
+        <button class="dialog-back" type="button" data-close-dialog>← Seguir comprando</button>
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Cerrar carrito">×</button>
+        <section class="quick-cart">
+            <p class="eyebrow">TU SELECCIÓN</p>
+            <h2 id="quick-cart-title">Carrito</h2>
+            <p id="quick-cart-summary" class="quick-cart-summary">0 artículos</p>
+            <ul id="quick-cart-items" class="cart-items"></ul>
+            <div class="quick-cart-total"><span>Total estimado</span><strong id="quick-cart-total">$0</strong></div>
+            <p class="quick-cart-note">Confirma el total, los descuentos y el envío al finalizar la compra.</p>
+            <button id="continue-checkout" class="button button-lime" type="button">Ir a finalizar compra ↗</button>
+        </section>
+    </dialog>
+
+    <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-title">
+        <button class="dialog-back" type="button" data-close-dialog>← Volver a la tienda</button>
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Cerrar cuenta">×</button>
+        <section id="account-auth"><p class="eyebrow">ACCESO CLIENTES / TU ESPACIO RITMO</p><h2 id="account-title">Mi cuenta</h2><div class="account-tabs"><button type="button" data-account-tab="login" class="is-active">Iniciar sesión</button><button type="button" data-account-tab="register">Crear cuenta</button></div>
+            <form id="account-form"><label>Nombre<input name="name" autocomplete="name" maxlength="100" placeholder="Tu nombre"></label><label>Correo electrónico<input name="email" type="email" autocomplete="email" required maxlength="120" placeholder="tu@correo.com"></label><label>Contraseña<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="100" placeholder="Mínimo 8 caracteres"></label><button class="button button-lime" type="submit">Continuar</button><button id="forgot-password" class="text-button" type="button">Olvidé mi contraseña</button></form>
+            <button id="google-login" class="google-button" type="button">Continuar con Google</button><p id="account-message" role="status"></p><p class="demo-note">Cuenta de demostración guardada en este navegador. Google OAuth requiere Client ID y dominio válidos.</p>
+        </section>
+        <section id="account-profile" hidden><p class="eyebrow">PERFIL LOCAL DE DEMOSTRACIÓN</p><h2 id="profile-name"></h2><p id="profile-email"></p><div class="profile-actions"><button id="account-orders" type="button">Mis pedidos</button><button id="account-logout" type="button">Cerrar sesión</button></div><div id="account-order-list"></div></section>
+    </dialog>
+</body>
+</html>
